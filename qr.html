@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>DKMS QR Code</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    body { margin:0; min-height:100vh; display:grid; place-items:center; background:#fff; color:#29283d; font-family:Aptos,Arial,sans-serif; }
+    main { width:min(92vw,700px); text-align:center; }
+    h1 { color:#302d73; margin:0 0 8px; }
+    #qrcode { display:inline-grid; place-items:center; padding:24px; border:2px solid #dedde8; background:#fff; }
+    #qrcode img, #qrcode canvas { display:block; }
+    p { overflow-wrap:anywhere; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>DKMS Listening Self-Assessment</h1>
+    <div id="qrcode" aria-label="QR code for https://rangan1809.github.io/DKMS/"></div>
+    <p><a href="https://rangan1809.github.io/DKMS/">https://rangan1809.github.io/DKMS/</a></p>
+  </main>
+  <script>
+    new QRCode(document.getElementById("qrcode"), {
+      text: "https://rangan1809.github.io/DKMS/",
+      width: 500,
+      height: 500,
+      colorDark: "#302d73",
+      colorLight: "#ffffff",
+      correctLevel: QRCode.CorrectLevel.H
+    });
+  </script>
+</body>
+</html>
