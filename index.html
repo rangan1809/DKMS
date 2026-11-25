@@ -2,12 +2,35 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="refresh" content="0; url=./DKMS_Listening_Self_Assessment_QR.html">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>DKMS Listening Self-Assessment</title>
-  <link rel="canonical" href="./DKMS_Listening_Self_Assessment_QR.html">
 </head>
 <body>
-  <p>Opening the <a href="./DKMS_Listening_Self_Assessment_QR.html">DKMS Listening Self-Assessment</a>.</p>
+<script>
+(async () => {
+  const source = "./DKMS_Listening_Self_Assessment_QR.html";
+  try {
+    const response = await fetch(source, { cache: "no-store" });
+    if (!response.ok) throw new Error("Unable to load the assessment");
+
+    let html = await response.text();
+
+    html = html.replace(/<section\b[^>]*\bclass="[^"]*\bfac\b[^"]*"[^>]*>[\s\S]*?<\/section>/gi, "");
+
+    html = html.replace(/<script\b[^>]*qrcode(?:js|\.min\.js)[^>]*>\s*<\/script>/gi, "");
+
+    html = html.split(/\r?\n/).filter(line =>
+      !line.includes("getElementById('make')") &&
+      !line.includes("getElementById('printqr')")
+    ).join("\n");
+
+    document.open();
+    document.write(html);
+    document.close();
+  } catch (error) {
+    document.body.innerHTML = '<p>Unable to load the assessment. <a href="' + source + '">Open it directly</a>.</p>';
+  }
+})();
+</script>
 </body>
 </html>
